@@ -5,12 +5,69 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Symbol Maze</title>
   <style>
-    :root{--bg:#0b0b0d;--tile:#17171a;--tileHover:#2b2b2f;--accent:#ffd24d}
-    html,body{height:100%;margin:0}
-    body{background:linear-gradient(180deg,#070709,#0f0f11);color:#fff;font-family:Inter,system-ui,Arial,sans-serif;display:flex;flex-direction:column;align-items:center;padding:28px}
-    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(44px,1fr));gap:10px;width:min(1100px,95%);}
-    a.symbol{display:flex;align-items:center;justify-content:center;height:44px;background:var(--tile);border-radius:8px;text-decoration:none;color:inherit;font-size:20px;transition:transform .12s,background .12s}
-    a.symbol:hover{transform:translateY(-4px);background:var(--tileHover)}
+    /* Afrofuturist color palette */
+    :root {
+      --bg: #050508;          /* Deep space black */
+      --bg2: #0b0d1a;         /* Midnight indigo gradient end */
+      --tile: #12131f;        /* Dark tile base */
+      --tileHover: #1d1f3a;   /* Dark tile hover */
+      --gold: #f5c77a;        /* Metallic gold accent */
+      --cyan: #35f2ff;        /* Electric cyan hover accent */
+      --violet: #9b5cff;      /* Optional secondary accent */
+    }
+
+    html, body {
+      height: 100%;
+      margin: 0;
+    }
+
+    body {
+      /* Cosmic nebula-style background */
+      background:
+        radial-gradient(circle at 20% 20%, #1a1c3a 0%, transparent 40%),
+        radial-gradient(circle at 80% 80%, #2a0f3f 0%, transparent 45%),
+        linear-gradient(180deg, var(--bg), var(--bg2));
+      color: var(--gold);
+      font-family: Inter, system-ui, Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 28px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(44px, 1fr));
+      gap: 10px;
+      width: min(1100px, 95%);
+    }
+
+    a.symbol {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 44px;
+      background: linear-gradient(
+        145deg,
+        rgba(255,255,255,0.04),
+        rgba(0,0,0,0.4)
+      ), var(--tile);
+      border-radius: 10px;
+      text-decoration: none;
+      color: var(--gold);
+      font-size: 20px;
+      transition: transform 0.15s ease, background 0.15s ease, box-shadow 0.15s ease, color 0.15s ease;
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.05);
+    }
+
+    a.symbol:hover {
+      transform: translateY(-4px) scale(1.05);
+      background: var(--tileHover);
+      color: var(--cyan);
+      box-shadow:
+        0 0 12px rgba(53, 242, 255, 0.45),
+        0 0 24px rgba(155, 92, 255, 0.25);
+    }
   </style>
 </head>
 <body>
@@ -18,8 +75,8 @@
 
   <script>
     const grid = document.getElementById('symbolGrid');
-    // symbols without circles or phone-like characters
-    const symbols = "★✦✧✩✫✬✭✮✯☀☁☂☃☄☘♆♇♜♠♣♥♦♪♫⚑⚛⚘⚙⚚⚝⚞⚿✀✁✂✃✄✈✉✎✏✐✑✒✓✔✕✖✗✘✙✚✛✜✝✞✟✠✡✢✣✤✥✦";
+    // Symbols without circles or phone-like characters
+    const symbols = "★✦✧✩✪✫✬✭✮✯☀☁☂☃☄☘☯♆♇♒♜♠♣♥♦♪♫⚑⚛⚡⚘⚙⚚⚝⚞⚿✀✁✂✃✄✆✇✈✉✌✍✎✏✐✑✒✓✔✕✖✗✘✙✚✛✜✝✞✟✠✡✢✣✤✥✦";
 
     const TOTAL = 200;
     const circleIndex = Math.floor(Math.random() * TOTAL);
